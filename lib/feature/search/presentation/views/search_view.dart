@@ -1,5 +1,5 @@
 import 'package:borsum/app/widgets/custom_text_field.dart';
-import 'package:borsum/feature/search/presentation/bloc/bloc/search_bloc.dart';
+import 'package:borsum/feature/search/presentation/bloc/search_bloc.dart';
 import 'package:borsum/feature/search/presentation/views/search_view_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

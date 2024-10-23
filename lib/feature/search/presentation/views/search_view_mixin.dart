@@ -1,7 +1,7 @@
 import 'package:borsum/core/enums/bloc_state.dart';
 import 'package:borsum/core/error/failures.dart';
 import 'package:borsum/core/utils/extensions/context_extension.dart';
-import 'package:borsum/feature/search/presentation/bloc/bloc/search_bloc.dart';
+import 'package:borsum/feature/search/presentation/bloc/search_bloc.dart';
 import 'package:borsum/feature/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

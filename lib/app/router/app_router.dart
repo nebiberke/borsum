@@ -29,7 +29,8 @@ final class AppRouter {
             name: 'NewsDetail',
             builder: (BuildContext context, GoRouterState state) {
               final id = state.pathParameters['id']!;
-              return NewsDetailView(newsId: id);
+              final newsId = int.tryParse(id) ?? 0;
+              return NewsDetailView(newsId: newsId);
             },
           ),
         ],

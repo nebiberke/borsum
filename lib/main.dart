@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (_) => Locator.searchBloc,
               ),
+              BlocProvider(
+                create: (_) => Locator.newsBloc,
+              ),
             ],
             child: child!,
           );

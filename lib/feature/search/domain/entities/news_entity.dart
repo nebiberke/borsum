@@ -15,6 +15,16 @@ class NewsEntity with _$NewsEntity {
     required DateTime pubDate,
   }) = _NewsEntity;
 
+  factory NewsEntity.empty() => NewsEntity(
+        id: 0,
+        stock: '',
+        title: '',
+        description: '',
+        image: '',
+        article: '',
+        pubDate: DateTime.now(),
+      );
+
   factory NewsEntity.fromModel(NewsModel model) => NewsEntity(
         id: model.id,
         stock: model.stock,
