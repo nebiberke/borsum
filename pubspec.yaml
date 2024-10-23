@@ -12,8 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Network
+  # Networking
   dio: ^5.7.0
+  dio_smart_retry: ^6.0.0
+  pretty_dio_logger: ^1.4.0
 
   # UI
   cupertino_icons: ^1.0.8
@@ -34,6 +36,7 @@ dependencies:
 
   # State Management
   flutter_bloc: ^8.1.6
+  supabase_flutter: ^2.8.0
 
 dev_dependencies:
   flutter_test:
