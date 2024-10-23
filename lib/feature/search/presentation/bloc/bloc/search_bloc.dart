@@ -9,20 +9,20 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  SearchBloc({required UcSearchStock search})
-      : _search = search,
+  SearchBloc({required UcSearchStock ucSearchStock})
+      : _ucSearchStock = ucSearchStock,
         super(SearchState()) {
     on<FetchSearchResults>(_onFetchSearchResults);
   }
 
-  final UcSearchStock _search;
+  final UcSearchStock _ucSearchStock;
 
   Future<void> _onFetchSearchResults(
     FetchSearchResults event,
     Emitter<SearchState> emit,
   ) async {
     emit(state.copyWith(blocState: BlocState.loading));
-    final result = await _search(event.query);
+    final result = await _ucSearchStock(event.query);
     result.fold(
       (failure) => emit(
         state.copyWith(blocState: BlocState.failure, failure: failure),

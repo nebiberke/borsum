@@ -7,15 +7,15 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
 final class SearchRepositoryImpl implements SearchRepository {
-  SearchRepositoryImpl({required SearchRemoteDataSource searchRemoteDataSource})
-      : _searchRemoteDataSource = searchRemoteDataSource;
+  SearchRepositoryImpl({required SearchRemoteDataSource remoteDataSource})
+      : _remoteDataSource = remoteDataSource;
 
-  final SearchRemoteDataSource _searchRemoteDataSource;
+  final SearchRemoteDataSource _remoteDataSource;
 
   @override
   Future<Either<Failure, List<NewsEntity>>> searchStock(String query) async {
     try {
-      final response = await _searchRemoteDataSource.searchStock(query);
+      final response = await _remoteDataSource.searchStock(query);
       final newsEntities = response.map(NewsEntity.fromModel).toList();
       return Right(newsEntities);
     } on NullResponseException {
