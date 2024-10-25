@@ -37,6 +37,9 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (_) => Locator.newsBloc,
               ),
+              BlocProvider(
+                create: (_) => Locator.newsSummaryCubit,
+              ),
             ],
             child: child!,
           );

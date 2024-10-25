@@ -1,3 +1,4 @@
+import 'package:borsum/core/enums/endpoint_enums.dart';
 import 'package:borsum/core/error/exceptions.dart';
 import 'package:borsum/core/error/failures.dart';
 import 'package:borsum/feature/news/data/datasources/news_remote_data_source.dart';
@@ -19,6 +20,22 @@ final class NewsRepositoryImpl implements NewsRepository {
       return Right(newsEntity);
     } on NullResponseException {
       return Left(NullResponseFailure());
+    } catch (_) {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> getNewsSummary(
+    String article,
+    EndpointEnums endpoints,
+  ) async {
+    try {
+      final summary =
+          await _remoteDataSource.getNewsSummary(article, endpoints);
+      return Right(summary);
+    } on ServerException {
+      return Left(NetworkFailure());
     } catch (_) {
       return Left(UnknownFailure());
     }
