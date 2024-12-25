@@ -36,7 +36,10 @@ dependencies:
 
   # State Management
   flutter_bloc: ^8.1.6
+
+  # Supabase
   supabase_flutter: ^2.8.0
+  flutter_native_splash: ^2.4.2
 
 dev_dependencies:
   flutter_test:
@@ -54,10 +57,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
+    - assets/images/
 
   # fonts:
   #   - family: Schyler
@@ -70,3 +72,13 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
+flutter_native_splash:
+  color: "#D1E910"
+  image: assets/images/splash_screen.png
+  android_12:
+    image: assets/images/app_logo.png
+    color: "#D1E910"
+  android: true
+  ios: true
+  web: false

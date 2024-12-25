@@ -3,3 +3,6 @@ final class NullResponseException implements Exception {}
 
 /// Thrown in the catch block of the try-catch block
 final class UnknownException implements Exception {}
+
+/// Thrown when the server returns an error
+final class ServerException implements Exception {}

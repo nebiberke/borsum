@@ -2,8 +2,10 @@ import 'package:borsum/core/clients/network/network_client.dart';
 import 'package:borsum/feature/news/data/datasources/news_remote_data_source.dart';
 import 'package:borsum/feature/news/data/repositories/news_repository_impl.dart';
 import 'package:borsum/feature/news/domain/repositories/news_repository.dart';
+import 'package:borsum/feature/news/domain/usecases/uc_get_news_summary.dart';
 import 'package:borsum/feature/news/domain/usecases/uc_get_news_with_id.dart';
 import 'package:borsum/feature/news/presentation/bloc/news_bloc.dart';
+import 'package:borsum/feature/news/presentation/cubit/news_summary_cubit.dart';
 import 'package:borsum/feature/search/data/datasources/search_remote_data_source.dart';
 import 'package:borsum/feature/search/data/repositories/search_repository_impl.dart';
 import 'package:borsum/feature/search/domain/repositories/search_repository.dart';
@@ -22,6 +24,9 @@ abstract final class Locator {
 
   /// Returns instance of [NewsBloc]
   static NewsBloc get newsBloc => _instance<NewsBloc>();
+
+  /// Returns instance of [NewsSummaryCubit]
+  static NewsSummaryCubit get newsSummaryCubit => _instance<NewsSummaryCubit>();
 
   static void setupLocator({
     required String baseUrl,
@@ -62,7 +67,10 @@ abstract final class Locator {
 
       // News Remote Data Source
       ..registerLazySingleton<NewsRemoteDataSource>(
-        () => NewsRemoteDataSourceImpl(supabaseClient: supabase),
+        () => NewsRemoteDataSourceImpl(
+          supabaseClient: supabase,
+          networkClient: _instance(),
+        ),
       )
 
       // News Repository
@@ -78,6 +86,16 @@ abstract final class Locator {
       // News Bloc
       ..registerFactory<NewsBloc>(
         () => NewsBloc(ucGetNewsWithId: _instance()),
+      )
+
+      // News Summary Use Case
+      ..registerLazySingleton<UcGetNewsSummary>(
+        () => UcGetNewsSummary(repository: _instance()),
+      )
+
+      // News Summary Cubit
+      ..registerFactory<NewsSummaryCubit>(
+        () => NewsSummaryCubit(ucGetNewsSummary: _instance()),
       );
   }
 }
