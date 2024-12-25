@@ -1,9 +1,9 @@
 enum EndpointEnums {
-  bert2bertShared(
-    path: '/models/nebiberke/haber-ozet-bert2bert-shared',
+  mt5Based(
+    path: '/models/nebiberke/haber-ozet-mt5-based',
   ),
-  mt5MultilingualXlsum(
-    path: '/models/nebiberke/haber-ozet-mt5-multilingual-xlsum',
+  mbartLarge50(
+    path: '/models/nebiberke/haber-ozet-mbart-large-50',
   );
 
   const EndpointEnums({required this.path});

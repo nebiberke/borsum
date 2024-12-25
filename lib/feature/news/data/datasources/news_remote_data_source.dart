@@ -45,6 +45,13 @@ final class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
         endpoints.path,
         data: jsonEncode({
           'inputs': article,
+          'parameters': {
+            'max_length': 150,
+            'min_length': 30,
+            'length_penalty': 2.0,
+            'num_beams': 7,
+            'early_stopping': true,
+          },
         }),
         options: Options(
           headers: {

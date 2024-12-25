@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
         prefixIcon: const Icon(Icons.search),
         hintText: hintText,
         hintStyle: context.textTheme.headlineSmall?.copyWith(
-          color: context.colorScheme.onSurface.withOpacity(0.5),
+          color: context.colorScheme.onSurface.withValues(alpha: 0.5),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(50.r),
